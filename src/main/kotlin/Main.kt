@@ -55,8 +55,11 @@ fun createdPerson() {
 //Given a list similar to the one above, write a function in which you will
 //create 2 more people objects and add them to the list at one go.
 fun addingAtAGo(){
-    val fifth = Person("Sunny", 68, 1.0, 10.0)
+
+    val fifth = Person("Sunday", 98, 1.2, 70.0)
     val sixth = Person("Danny", 56, 1.9, 70.60)
+    val added = listOf(fifth, sixth)
+    val both = added + person
 
 }
 //Write a function that takes in a list of Car objects each with a
