@@ -1,12 +1,34 @@
+// This is the corrected exercise. As corrected in class.
 fun main(){
+                    //Calling Quiz 1
     println(evenIndex(listOf("naima", "janet","Malia", "Drake", "Hi","jeff","Fred", "hrender", "ten")))
 
-    println( height(listOf(1.56, 3.23,  4.54, 1.32, 15.20)))
+                    //Calling Quiz 2
+    println( height(listOf(1.5, 3.5,  4.5, 1.5, 15.5)))
 
-    createdPerson()
+                    //Quiz2 using Alternative method
+    println(getpeoplesHeightt((listOf(1.5, 3.5,  4.5, 1.5, 15.5))))
 
-    println( averageMileage())
+                    // Calling Quiz3
+    createdPerson(person = listOf(Person("Georgia", 10, 1.5, 50.0),
+       Person("Nalia", 21,1.34, 23.40),
+       Person("Ginny", 18, 1.2, 40.0),Person("Sunny", 68, 1.0, 10.0)))
+
+    println()
+                    //Calling Quiz4
+    val newList = personn()
+    //println(newList)
+
+            //Calling Quiz 5
+println( averageMileage(
+    listOf(CarObjects("KDC831A",240.60),
+    CarObjects("KDD332C",600.30),
+    CarObjects("KQD441D",800.19),
+    CarObjects("KAC",309.00)
+    )))
 }
+
+
 
 //Question 1
 //Given a list of 10 strings, write a function that returns a list of the strings
@@ -34,45 +56,45 @@ fun  height(heights: List<Double>):peoplesHeight{
     return stats
 
 }
+//A shorter Alternative Method to do question2
+fun getpeoplesHeightt(heightss:List<Double>):peoplesHeight{
+
+    return peoplesHeight(
+        average = heightss.average(),
+        sum = heightss.sum()
+    )
+}
 
 //Question3
 //Given a list of Person objects, each with the attributes, name, age,
 //height and weight. Sort the list in order of descending age (2 points)
 data class Person(var name: String, var age: Int, var height:Double, var weight:Double)
 
-fun createdPerson() {
-    val first = Person("Mercy", 9, 0.5, 10.0)
-    val second = Person("Georgia", 25, 1.5, 50.0)
-    val third = Person("Ginny", 18, 1.2, 40.0)
-    val fourth = Person("Sunny", 68, 1.0, 10.0)
-
-    var person = listOf(first, second, third, fourth)
-    //returns person
-    val sortedPerson = person.sortedByDescending { person -> person.age }
-    println(sortedPerson)
+fun createdPerson(person:List<Person>) {
+    println(person.sortedByDescending {person ->person.age  })
 
 }
+
+//Question 4
 //Given a list similar to the one above, write a function in which you will
 //create 2 more people objects and add them to the list at one go.
-fun addingAtAGo(){
+fun personn():List<Person>{
 
-    val fifth = Person("Sunday", 98, 1.2, 70.0)
-    val sixth = Person("Danny", 56, 1.9, 70.60)
-    val added = listOf(fifth, sixth)
-    val both = added + person
+    val person1 = Person("yup",67,89.9,97.0)
+    val person2 = Person("yui",89,90.9,78.0)
+
+    return mutableListOf(person1,person2)
 
 }
+
+
 //Write a function that takes in a list of Car objects each with a
 //registration and mileage attribute and returns the average mileage of
 //all the vehicles in the list. (3 points)
 data class CarObjects(var registration:String, var mileage:Double)
-fun averageMileage():Double{
-    val car1=CarObjects("KDC831A",240.60)
-    val car2=CarObjects("KDD332C",600.30)
-    val car3=CarObjects("KQD441D",800.19)
-    val car4=CarObjects("KAC",309.00)
-    var cars= listOf(car1,car2,car3,car4)
-    var sumOfMileage=cars.sumOf { Mile-> Mile.mileage }
+fun averageMileage(cars:List<CarObjects>):Double{
+
+    var sumOfMileage=cars.sumOf { mile-> mile.mileage }
     var average=sumOfMileage/cars.size
     return average
 }
